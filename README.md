@@ -5,7 +5,7 @@
 ![Docker](https://img.shields.io/badge/Docker-Ready-2496ED)
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 
-## 📋 Hackathon Hakkında
+## 📋 Proje Özeti
 
 Bu proje, **AI Builder Challenge 2-Day Hackathon** için hazırlanmış bir "Broken Calculator Agent" challenge'ıdır. Proje başlangıcında **12 kritik hata** ve **100+ derleme hatası** içeriyordu. Ekibimiz tarafından bu hatalar giderildi, proje modernize edildi ve yeni yetenekler eklendi.
 
