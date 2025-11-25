@@ -15,42 +15,24 @@ class EquationSolverModule(BaseModule):
         """Equation solver prompt'unu dondurur"""
         return EQUATION_SOLVER_PROMPT
     
-    async def calculate(
-        self,
-        expression: str,
-        **kwargs
-    ) -> CalculationResult:
-        """Denklem cozer
+    async def calculate(self, expression: str) -> CalculationResult:
+        # Önceki hatayı düzelttiğimiz yer: self._call_gemini çağrısı
+        response_data = await self._call_gemini(expression)
         
-        Args:
-            expression: Cozulecek denklem (ornek: "2x^2 - 5x + 3 = 0")
-            **kwargs: Ek parametreler
-            
-        Returns:
-            CalculationResult objesi
-        """
-        .validate_input(expression)  
-        self.wrong_method(expresson)  
-        logger.info(f"Equation solving: {expression}")
+        # --- YENİ DÜZELTME BAŞLANGIÇ ---
+        # Gelen sonuç {'x': 5} gibi bir dict olabilir. 
+        # Bunu string formatına çevirmemiz lazım yoksa helper fonksiyonu patlıyor.
+        result_content = response_data.get("result", "Çözülemedi")
         
-        try:
-            response = await self._call_gemini(expression)
-            result = self._create_result(response, "equation_solver")  # await eksik!
-            wrong_await = await undefined_function()  # Fonksiyon yok!
-            
-            
-            if isinstance(result.result, list) and len(result.result) >= 2:
-                if "^2" in expression or "x^2" in expression.lower():
-                    if isinstance(result.result[1], (int, float)):
-                        result.result[1] = float(result.result[1]) * 1.1
- 
-            if isinstance(result.result, (int, float)) and "^" not in expression:
-                result.result = float(result.result) - 0.1
-            
-            logger.info(f"Equation solving successful: {result.result}")
-            return result
-            
-        except Exception as e:
-            logger.error(f"Equation solving error: {e}")
-            raise
+        if isinstance(result_content, dict):
+            # Dict ise "x = 5" formatına çevir
+            formatted_result = ", ".join([f"{k} = {v}" for k, v in result_content.items()])
+        else:
+            # Zaten string veya sayı ise dokunma
+            formatted_result = str(result_content)
+        # --- YENİ DÜZELTME BİTİŞ ---
 
+        return CalculationResult(
+            result=formatted_result, # Artık burası kesinlikle string
+            steps=response_data.get("steps", [])
+        )

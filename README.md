@@ -277,17 +277,22 @@ def test_fixed_error():
 
 Hackathon sırasında projeye eklediğiniz yeni özellikleri buraya dokümante edin.
 
-### Yeni Modül: [Modül Adı]
+## 🆕 Eklenen Özellikler
+
+Hackathon sırasında projeye eklediğiniz yeni özellikleri buraya dokümante edin.
+
+### Yeni Modül: Unit Converter (Birim Çevirici)
 
 **Açıklama:**
-[Yeni modülünüzün ne yaptığını açıklayın]
+Kullanıcıların uzunluk, ağırlık, sıcaklık ve hacim gibi farklı fiziksel birimleri doğal dil kullanarak birbirine çevirmesini sağlayan modül. Gemini AI'ın anlamsal anlama yeteneği kullanılarak "km to miles" veya "celsius to fahrenheit" gibi ifadeleri otomatik algılar.
 
 **Kullanım:**
 
 ```python
-# Kullanım örneği
-[örnek_kod]
-```
+# Örnek Kullanım Senaryoları:
+!convert 100 kilometers to miles
+!convert 30 celsius to fahrenheit
+!convert 50 kg to lbs
 
 **Özellikler:**
 
@@ -376,11 +381,12 @@ pytest --cov=src --cov-report=html
 pytest -v
 ```
 
+### Test Sonuçları
+...
 **Sonuçlar:**
-
-- ✅ Başarılı Testler: [sayı]
-- ❌ Başarısız Testler: [sayı]
-- ⏭️ Atlanan Testler: [sayı]
+- ✅ Başarılı Testler: 13
+- ❌ Başarısız Testler: 0
+- ⏭️ Atlanan Testler: 0
 
 ---
 

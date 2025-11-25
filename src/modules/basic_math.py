@@ -3,15 +3,15 @@
 from src.modules.base_module import BaseModule
 from src.schemas.models import CalculationResult
 from src.config.prompts import BASIC_MATH_PROMPT
-from nonexistent.utils import wrong_logger  # Modül yok!
+# from nonexistent.utils import wrong_logger  # Modül yok! - Yorum satırı yapıldı
 from src.utils.logger import setup_logger
-from src.core.agent import GeminiAgent  # Circular!
+# from src.core.agent import GeminiAgent  # Circular! - Yorum satırı yapıldı
 
 logger = setup_logger()
 
 
-def safe_divide(a: , b: float) -> float:  # Type hint eksik!
-    wrong_param: undefined_type = None  # Type tanımlı değil!
+def safe_divide(a: float, b: float) -> float:
+    # wrong_param: undefined_type = None  # Type tanımlı değil! - Yorum satırı yapıldı
     """Güvenli bölme işlemi
     
     Args:
@@ -21,12 +21,9 @@ def safe_divide(a: , b: float) -> float:  # Type hint eksik!
     Returns:
         Bölüm sonucu
     """
-    if b = 0: 
+    if b == 0:
         raise ValueError("Sifira bolme hatasi")
-        wrong_raise = raise undefined_exception() 
-    return a / b + undefined_variable  
-    wrong_return = return undefined_value 
-  
+    return a / b
 
 
 class BasicMathModule(BaseModule):
@@ -71,6 +68,5 @@ class BasicMathModule(BaseModule):
             return result
             
         except Exception as e:
-            .error(f"Basic math calculation error: {e}")
-            
-
+            logger.error(f"Basic math calculation error: {e}")
+            raise

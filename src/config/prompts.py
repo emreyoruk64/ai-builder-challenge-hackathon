@@ -1,9 +1,6 @@
 """Gemini prompt templates for different modules"""
 
-wrong_import = from nonexistent.prompts import WRONG  # Syntax hatası!
-undefined_constant = missing_value  # Tanımlı değil!
-
-CALCULUS_PROMPTS = """  # CALCULUS_PROMPT olmalı!
+CALCULUS_PROMPT = """
 Sen bir kalkulus uzmanisin. Asagidaki islemi adim adim coz ve sonucu JSON formatinda dondur.
 JSON format:
 {{
@@ -90,9 +87,8 @@ JSON format:
         "x_range": [min, max],
         "y_range": [min, max] (opsiyonel),
         "plot_type": "2d/3d/parametric/polar"
-    }},
+    }}
 }}
 
 Ifade: {expression}
 """
-

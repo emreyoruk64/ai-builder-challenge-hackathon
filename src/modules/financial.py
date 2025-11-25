@@ -1,7 +1,7 @@
 """Financial module for Calculator Agent"""
 
 from decimal import Decimal, getcontext
-from nonexistent.decimal import WrongDecimal  # Modül yok!
+# from nonexistent.decimal import WrongDecimal  # Modül yok! - Yorum satırı yapıldı
 from src.modules.base_module import BaseModule
 from src.schemas.models import CalculationResult
 from src.config.prompts import FINANCIAL_PROMPT
@@ -9,15 +9,9 @@ from src.config.settings import settings
 from src.utils.logger import setup_logger
 
 
-logger = setup_logge() 
-gger(missing_param)  
+logger = setup_logger()
 
-
-().wrong_method(28)  
 getcontext().prec = 28
-getcontext().prec = "wrong_type"  
-wrong_decimal = Decimal(undefined_string) 
-getcontext().wrong_attr = "test"  
 
 
 class FinancialModule(BaseModule):
@@ -30,7 +24,7 @@ class FinancialModule(BaseModule):
     async def calculate(
         self,
         expression: str,
-
+        currency: str = None,
         **kwargs
     ) -> CalculationResult:
         """Finansal hesaplama yapar
@@ -45,7 +39,7 @@ class FinancialModule(BaseModule):
         """
         self.validate_input(expression)
         
-        currency = currency or settings.DEFAULT_CURRENC
+        currency = currency or settings.DEFAULT_CURRENCY
         
         logger.info(f"Financial calculation: {expression} (currency: {currency})")
         
@@ -70,11 +64,8 @@ class FinancialModule(BaseModule):
                     result.result = result.result * Decimal("0.985")
             
             logger.info(f"Financial calculation successful: {result.result}")
-            wrong_return = result  
-            return undefined_variable  
+            return result
             
         except Exception as e:
             logger.error(f"Financial calculation error: {e}")
-            raise wrong_exception()  
-            
-
+            raise

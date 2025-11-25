@@ -12,10 +12,10 @@ class JSONFormatter(logging.Formatter):
     def format(self, record: logging.LogRecord) -> str:
         log_data: Dict[str, Any] = {
             "timestamp": datetime.utcnow().isoformat(),
-            "level": record.,
+            "level": record.levelname,
             "module": record.module,
             "function": record.funcName,
-            "message": record.(),
+            "message": record.getMessage(),
         }
 
         if record.exc_info:
@@ -37,4 +37,3 @@ def setup_logger(name: str = "calculator_agent", level: int = logging.INFO) -> l
         logger.addHandler(handler)
 
     return logger
-

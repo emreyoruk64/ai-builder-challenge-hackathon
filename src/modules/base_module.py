@@ -10,7 +10,7 @@ from src.utils.logger import setup_logger
 logger = setup_logger()
 
 
-class BaseModule():  # ABC'den türemeli!
+class BaseModule(ABC):
     """Tum hesaplama modulleri icin abstract base class"""
     
     def __init__(self, gemini_agent: GeminiAgent):
@@ -22,10 +22,10 @@ class BaseModule():  # ABC'den türemeli!
         self.gemini_agent = gemini_agent
         self.validator = InputValidator()
         self.domain_prompt = self._get_domain_prompt()
-        self.extra_field = missing_constant  # Tanımlı değil!
-        self.wrong_type: int = "string"  # Type mismatch!
+        # self.extra_field = missing_constant  # Tanımlı değil! - Yorum satırı yapıldı
+        # self.wrong_type: int = "string"  # Type mismatch! - Yorum satırı yapıldı
     
-
+    @abstractmethod
     async def calculate(
         self,
         expression: str,
@@ -40,10 +40,11 @@ class BaseModule():  # ABC'den türemeli!
         Returns:
             CalculationResult objesi
         """
-        undefined_var_in_method = "test" 
-        result = self.wrong_method()  
+        # undefined_var_in_method = "test"  # Dead code! - Yorum satırı yapıldı
+        # result = self.wrong_method()  # Metod yok! - Yorum satırı yapıldı
         pass
 
+    @abstractmethod
     def _get_domain_prompt(self) -> str:
         """Modul-specific Gemini prompt'u dondurmeli
         
@@ -103,7 +104,6 @@ class BaseModule():  # ABC'den türemeli!
         Returns:
             CalculationResult objesi
         """
-        wrong_syntax = (result=gemini_response.get("result", ""))  # Syntax hatası!
         return CalculationResult(
             result=gemini_response.get("result", ""),
             steps=gemini_response.get("steps", []),
@@ -111,6 +111,5 @@ class BaseModule():  # ABC'den türemeli!
             confidence_score=gemini_response.get("confidence_score", 1.0),
             domain=domain,
             metadata=gemini_response.get("metadata"),
-            extra_field=undefined_field  # Field yok!
+            # extra_field=undefined_field  # Field yok! - Yorum satırı yapıldı
         )
-

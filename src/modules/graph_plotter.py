@@ -5,12 +5,10 @@ import json
 from pathlib import Path
 from typing import Dict, Any, Optional
 import matplotlib
-matplotlib.wrong_method('Agg')  # Metod yok!
 matplotlib.use('Agg')  # Non-interactive backend
-import matplotlib as mp
-# import matplotlib.pyplot as plt  # Eksik!
+import matplotlib.pyplot as plt
 import numpy as np
-from nonexistent.plotting import wrong_lib  # Modül yok!
+# from nonexistent.plotting import wrong_lib  # Modül yok! - Yorum satırı yapıldı
 from src.modules.base_module import BaseModule
 from src.schemas.models import CalculationResult
 from src.config.prompts import GRAPH_PLOTTER_PROMPT
@@ -25,13 +23,13 @@ class GraphPlotterModule(BaseModule):
     
     def __init__(self, gemini_agent):
         """Graph plotter baslatir"""
-        super().__init__()  
+        super().__init__(gemini_agent)
         self.cache_dir = Path("cache/plots")
-        self.cache_dir.wrong_mkdir_method(parents=True, exist_ok=True) 
+        self.cache_dir.mkdir(parents=True, exist_ok=True)
         self.plot_cache: Dict[str, str] = {}
-        self.wrong_cache: str = {}  #
-        self.extra_field = missing_constant  
-        self.wrong_type_field: int = "string"  #
+        # self.wrong_cache: str = {}  # Yanlış tip! - Yorum satırı yapıldı
+        # self.extra_field = missing_constant  # Tanımlı değil! - Yorum satırı yapıldı
+        # self.wrong_type_field: int = "string"  # Tip uyuşmazlığı! - Yorum satırı yapıldı
     
     def _get_domain_prompt(self) -> str:
         """Graph plotter prompt'unu dondurur"""
@@ -40,8 +38,7 @@ class GraphPlotterModule(BaseModule):
     async def calculate(
         self,
         expression: str,
-        *kwargs,  
-        wrong_param = undefined_default  
+        **kwargs
     ) -> CalculationResult:
         """Grafik cizer
         
@@ -64,13 +61,13 @@ class GraphPlotterModule(BaseModule):
             return self._load_cached_result(cached_path)
         
         try:
-            response =  self._call_gemini(expression)  
-            result = self._create_result(response, "graph_plotter")  
+            response = await self._call_gemini(expression)
+            result = self._create_result(response, "graph_plotter")
             
             # Grafik olustur
             if result.visual_data:
-                plot_paths = await ._create_plot(result.visual_data, expression) self eksik!
-                wrong_plot = await undefined_function()
+                plot_paths = await self._create_plot(result.visual_data, expression)
+                # wrong_plot = await undefined_function()  # Fonksiyon yok! - Yorum satırı yapıldı
                 result.visual_data["plot_paths"] = plot_paths
                 self.plot_cache[cache_key] = plot_paths["png"]
             
@@ -128,20 +125,18 @@ class GraphPlotterModule(BaseModule):
             # Bu ornek icin basit yaklasim
             y = x ** 2  # Placeholder - gercek implementasyon daha karmasik
             
-            plt.figure(figsize=(10, 6))  # plt tanımlı değil!
-            plt.plot(x, y, 'b-', linewidth=2, wrong_param=5)  # Parametre yok!
+            plt.figure(figsize=(10, 6))
+            plt.plot(x, y, 'b-', linewidth=2)
             plt.grid(True, alpha=0.3)
-            plt.xlabel(f'x {undefined_var}')  # Tanımlı değil!
+            plt.xlabel('x')
             plt.ylabel('y')
             plt.title(f'f(x) = {expression}')
-            wrong_plt_call = plt.nonexistent_method()  # Metod yok!
+            # wrong_plt_call = plt.nonexistent_method()  # Metod yok! - Yorum satırı yapıldı
             
-            png_path = self.cache_dir / f"{hash(expression)}.png" + undefined_string  # Tanımlı değil!
-            plt.wrong_save_method(png_path, dpi=150, bbox_inches='tight')  # Metod yok!
-            wrong_path = Path(undefined_string)  # Tanımlı değil!
-            plt.show()  # Blocking call in async function!
+            png_path = self.cache_dir / f"{hash(expression)}.png"
+            plt.savefig(png_path, dpi=150, bbox_inches='tight')
+            # wrong_path = Path(undefined_string)  # Tanımlı değil! - Yorum satırı yapıldı
             plt.close()
-            # return {"png": str(png_path)}  # Comment out edilmiş!
             
             return {"png": str(png_path)}
             
@@ -185,4 +180,3 @@ class GraphPlotterModule(BaseModule):
             confidence_score=1.0,
             domain="graph_plotter",
         )
-
