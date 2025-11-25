@@ -471,22 +471,18 @@ calculator-agent/
 ├── .env.example
 ├── .gitignore
 ├── README.md
-└── BUG_REPORT.MD
+└── BUG_REPORT.md
 - **Pydantic Models**: Input/output validasyonu
 - **Test Coverage**: Minimum %90 unit test coverage
 
 ---
 
 ## 🔒 Güvenlik İyileştirmeleri
-### Kod Standartları
 
-Projede uyulması gereken standartlar:
+### 1. API Key Yönetimi
 
-- **Async/Await**: Tüm Gemini API çağrılarında async pattern
-- **Type Hints**: Tüm fonksiyonlarda zorunlu tip belirtilmesi
-- **Google Docstring**: Dokümantasyon formatı
-- **Pydantic Models**: Input/output validasyonu
-- **Test Coverage**: Minimum %90 unit test coverage
+**Problem:**
+API anahtarları kodda hardcoded olarak saklanıyordu.
 
 **Çözüm:**
 Environment variables kullanılarak API anahtarı güvenli şekilde yönetiliyor.
@@ -522,8 +518,10 @@ Pydantic modelleri ile tüm girdiler ve yapılandırma ayarları validate ediliy
     - Gemini 1.5 modellerinin deprecate edildiği ve 2.0-flash modeline geçiş yapılması gerektiği öğrenildi.
 
 2. **Few-Shot Prompting**
-    - JSON çıktı kararlılığı için few-shot örneklerin kritik önemi anlaşıldı.
+### Teknik Öğrenimler
 
+1. **API Versiyonlama**
+    - Gemini 1.5 modellerinin deprecate edildiği ve 2.0-flash modeline geçiş yapılması gerektiği öğrenildi.
 3. **Defensive Programming**
     - Try-except blokları ve input validasyonunun production-ready kod için şart olduğu görüldü.
 
