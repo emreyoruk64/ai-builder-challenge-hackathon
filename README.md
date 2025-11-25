@@ -471,7 +471,7 @@ calculator-agent/
 ├── .env.example
 ├── .gitignore
 ├── README.md
-└── HATA_LOGLARI.md
+└── BUG_REPORT.MD
 - **Pydantic Models**: Input/output validasyonu
 - **Test Coverage**: Minimum %90 unit test coverage
 
