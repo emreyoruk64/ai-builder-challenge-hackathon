@@ -429,6 +429,9 @@ pytest tests/ -v
 - **TOPLAM**: 230 / 230 puan (Tam Puan)
 
 **Ekstra Başarılar:** Toplamda 39 hata tespit edilip düzeltildi (hedeflenen 12 hatanın üzerinde). Proje production-ready hale getirildi.
+
+> **📝 Not:** Detaylı teknik raporlar ve çözüm adımları için [BUG_REPORT.md](BUG_REPORT.md) dosyasını inceleyebilirsiniz.
+
 calculator-agent/
 ├── src/
 │   ├── main.py                 # Agent orchestrator ve UI entry point
