@@ -7,7 +7,7 @@
 
 ## 📋 Proje Özeti
 
-Bu proje, **AI Builder Challenge 2-Day Hackathon** için hazırlanmış bir "Broken Calculator Agent" challenge'ıdır. Proje başlangıcında **12 kritik hata** ve **100+ derleme hatası** içeriyordu. Ekibimiz tarafından bu hatalar giderildi, proje modernize edildi ve yeni yetenekler eklendi.
+Bu proje, **AI Builder Challenge 2-Day Hackathon** için hazırlanmış bir "Broken Calculator Agent" challenge'ıdır. Proje başlangıcında **12 kritik hata** ve **100+ derleme hatası** içeriyordu. Yapılan geliştirmelerle bu hatalar giderildi, proje modernize edildi ve yeni yetenekler eklendi.
 
 ### 🎯 Hackathon Hedefleri
 
@@ -468,7 +468,7 @@ calculator-agent/
 │       └── test_unit_converter.py
 ├── requirements.txt
 ├── Dockerfile
-├── .env.example
+├── .env
 ├── .gitignore
 ├── README.md
 └── BUG_REPORT.md
