@@ -430,7 +430,7 @@ pytest tests/ -v
 
 **Ekstra Başarılar:** Toplamda 39 hata tespit edilip düzeltildi (hedeflenen 12 hatanın üzerinde). Proje production-ready hale getirildi.
 
-> **📝 Not:** Detaylı teknik raporlar ve çözüm adımları için [BUG_REPORT.md](BUG_REPORT.md) dosyasını inceleyebilirsiniz.
+> **📝 Not:** Detaylı teknik raporlar ve çözüm adımları için BUG_REPORT.md dosyasını inceleyebilirsiniz.
 
 calculator-agent/
 ├── src/
